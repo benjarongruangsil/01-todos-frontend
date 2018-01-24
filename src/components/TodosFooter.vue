@@ -1,6 +1,9 @@
 <template>
   <div>
-    <p class="is-pulled-left">{{count}} items left</p></br>
+    <p class="is-pulled-left" >{{all}} items left</p></br>
+    <p class="is-pulled-left" >{{active}} items left</p></br>
+    <p class="is-pulled-left" >{{Completed}} items left</p></br>
+    
     <visibility-input/>
   </div>
 </template>
@@ -20,8 +23,20 @@ export default {
   },
   computed: {
     ...mapGetters(['todos']),
-    count () {
-      return this.todos.filter(todo => todo.completed === false).length
+    all () {
+      if (this.todos) {
+        return this.todos.length
+      }
+    },
+    active () {
+      if (this.todos) {
+        return this.todos.filter(todo => todo.completed === false).length
+      }
+    },
+    Completed () {
+      if (this.todos) {
+        return this.todos.filter(todo => todo.completed === true).length
+      }
     }
   }
 }

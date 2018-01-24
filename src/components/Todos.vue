@@ -2,8 +2,10 @@
   <div>
     <div v-for="(todo, index) in filterTodo" :key="todo.title" v-if="visibility === 'all'">
       <b-field class="is-pulled-left">
-        <b-checkbox size="is-large" v-if="todo.completed" :value="todo.completed" @input="statusTodo(index)"><strike>{{ todo.title }}</strike></b-checkbox>
-        <b-checkbox size="is-large" v-else @input="statusTodo(index)">{{ todo.title }}</b-checkbox>
+        <b-checkbox size="is-large"  :value="todo.completed" @input="statusTodo(index)">
+        <strike v-if="todo.completed">{{ todo.title }}</strike>
+        <p v-else> {{ todo.title }} </p>
+        </b-checkbox>
       </b-field>
       <a class="delete is-pulled-right" @click="delTodo(index)" ></a>
       <div class="is-clearfix"></div>
@@ -11,8 +13,10 @@
 
     <div v-for="(todo, index) in filterTodo" :key="todo.title" v-if="visibility === 'active'" v-show="!todo.completed">
       <b-field class="is-pulled-left">
-        <b-checkbox size="is-large" v-if="todo.completed" :value="todo.completed" @input="statusTodo(index)"><strike>{{ todo.title }}</strike></b-checkbox>
-        <b-checkbox size="is-large" v-else @input="statusTodo(index)">{{ todo.title }}</b-checkbox>
+        <b-checkbox size="is-large"  :value="todo.completed" @input="statusTodo(index)">
+        <strike v-if="todo.completed">{{ todo.title }}</strike>
+        <p v-else> {{ todo.title }} </p>
+        </b-checkbox>
       </b-field>
       <a class="delete is-pulled-right" @click="delTodo(index)" ></a>
       <div class="is-clearfix"></div>
@@ -20,8 +24,10 @@
 
     <div v-for="(todo, index) in filterTodo" :key="todo.title" v-if="visibility === 'completed'" v-show="todo.completed">
       <b-field class="is-pulled-left">
-        <b-checkbox size="is-large" v-if="todo.completed" :value="todo.completed" @input="statusTodo(index)"><strike>{{ todo.title }}</strike></b-checkbox>
-        <b-checkbox size="is-large" v-else @input="statusTodo(index)">{{ todo.title }}</b-checkbox>
+        <b-checkbox size="is-large"  :value="todo.completed" @input="statusTodo(index)">
+        <strike v-if="todo.completed">{{ todo.title }}</strike>
+        <p v-else> {{ todo.title }} </p>
+        </b-checkbox>
       </b-field>
       <a class="delete is-pulled-right" @click="delTodo(index)" ></a>
       <div class="is-clearfix"></div>
